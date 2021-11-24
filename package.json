@@ -1,0 +1,18 @@
+{
+  "name": "jest-sucks",
+  "version": "0.0.0",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Kipras Melnikovas <kipras@kipras.org> (https://kipras.org/)",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn tsc -b",
+    "test": "yarn ts-node-dev test/test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.10",
+    "ts-node-dev": "1.1.8",
+    "typescript": "4.5.2"
+  }
+}
