@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn tsc -b",
-    "test": "yarn ts-node-dev test/test.ts"
+    "prepack": "yarn build"
   },
   "devDependencies": {
     "@types/node": "16.11.10",
