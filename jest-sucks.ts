@@ -69,3 +69,18 @@ export const runManyWithVerboseArgs = (
 	runMany(argsNormalized)
 );
 
+export const expectToError = (callbackThatShouldError: () => void): void => {
+	let hasErrored: boolean = false;
+
+	try {
+		callbackThatShouldError();
+	} catch (_e) {
+		hasErrored = true;
+	} finally {
+		if (!hasErrored) {
+			// eslint-disable-next-line no-unsafe-finally
+			throw new Error("expected to error, but did not.");
+		}
+	}
+};
+
