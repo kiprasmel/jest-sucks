@@ -84,3 +84,6 @@ export const expectToError = (callbackThatShouldError: () => void): void => {
 	}
 };
 
+export const noop = (..._xs: any[]): void => {
+	//
+};
