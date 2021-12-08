@@ -55,7 +55,7 @@ export const runMany = (
 	// TODO configurable:
 	failedRunResults.length
 		? fs.writeFileSync(failedResultFilePath, JSON.stringify(failedRunResults, null, 2))
-		: fs.existsSync(failedResultFilePath) && fs.rmSync(failedResultFilePath),
+		: fs.existsSync(failedResultFilePath) && fs.unlinkSync(failedResultFilePath),
 	failedRunResults.length && console.log(failedResultFilePath, "\n\n\n"),
 	failedRunResults.length && process.exit(1),
 	runResults

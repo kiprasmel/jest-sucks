@@ -18,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/kiprasmel/jest-sucks"
+  },
+  "engines": {
+	  "node": ">=8"
   }
 }
