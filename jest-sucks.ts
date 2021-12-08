@@ -13,7 +13,7 @@ export const run = (
 ): RunResult => {
 	const { log = 1, not = false } = opts;
 
-	const passed: boolean = received === expected || not;
+	const passed: boolean = received === expected && !not;
 
 	if (log) {
 		console.log(
