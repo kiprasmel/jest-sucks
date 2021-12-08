@@ -1,6 +1,6 @@
 {
   "name": "jest-sucks",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Kipras Melnikovas <kipras@kipras.org> (https://kipras.org/)",
@@ -20,6 +20,6 @@
     "url": "http://github.com/kiprasmel/jest-sucks"
   },
   "engines": {
-	  "node": ">=8"
+    "node": ">=8"
   }
 }
