@@ -32,6 +32,13 @@ export const run = (
 const didPass = ({ passed }: RunResult): boolean => passed;
 const didNotPass = ({ passed }: RunResult): boolean => !passed;
 
+/**
+ * args:
+ * 1. it should do what?
+ * 2. received
+ * 3. expected
+ * 4. options?
+ */
 export const runMany = (
 	// TODO Opts as (conditional) second arg
 	args: [string, string, string, Opts?][],  // TODO ESLINT
