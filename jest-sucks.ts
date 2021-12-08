@@ -40,7 +40,7 @@ export const runMany = (
 	failedRunResults: RunResult[] = [],
 	failedResultFilePath: string = path.join(process.cwd(), "test-results.failed.json")
 ): typeof runResults => (
-	(runResults = args.map(([it, expected, received, opts]) => run(it, received, expected, opts))),
+	(runResults = args.map(([it, received, expected, opts]) => run(it, received, expected, opts))),
 	console.log(),
 	(passedRunResults = runResults.filter(didPass)),
 	(failedRunResults = runResults.filter(didNotPass)),
@@ -62,10 +62,10 @@ export const runMany = (
 );
 
 export const runManyWithVerboseArgs = (
-	args: { it: string; received: string; expected: string; opts?: Opts }[],
+	args: { it: string; expected: string; received: string; opts?: Opts }[],
 	argsNormalized: Parameters<typeof runMany>[0] = []
 ): RunResult[] => (
-	(argsNormalized = args.map(({ it, expected, received, opts }) => [it, expected, received, opts])),
+	(argsNormalized = args.map(({ it, received, expected, opts }) => [it, received, expected, opts])),
 	runMany(argsNormalized)
 );
 
