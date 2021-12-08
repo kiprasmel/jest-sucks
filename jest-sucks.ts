@@ -1,3 +1,4 @@
+import os from "os"
 import fs from "fs";
 import path from "path";
 
@@ -38,7 +39,7 @@ export const runMany = (
 	runResults: RunResult[] = [],
 	passedRunResults: RunResult[] = [],
 	failedRunResults: RunResult[] = [],
-	failedResultFilePath: string = path.join(process.cwd(), "test-results.failed.json")
+	failedResultFilePath: string = path.join(os.tmpdir(), path.basename(process.cwd()), "test-results.failed.json")
 ): typeof runResults => (
 	(runResults = args.map(([it, received, expected, opts]) => run(it, received, expected, opts))),
 	console.log(),
@@ -54,8 +55,8 @@ export const runMany = (
 	),
 	// TODO configurable:
 	failedRunResults.length
-		? fs.writeFileSync(failedResultFilePath, JSON.stringify(failedRunResults, null, 2))
-		: fs.existsSync(failedResultFilePath) && fs.unlinkSync(failedResultFilePath),
+		? (fs.mkdirSync(path.dirname(failedResultFilePath), { recursive: true }), fs.writeFileSync(failedResultFilePath, JSON.stringify(failedRunResults, null, 2)))
+		: fs.existsSync(failedResultFilePath) && (fs.writeFileSync(failedResultFilePath, "[]")/*, fs.unlinkSync(failedResultFilePath)*/ ),
 	failedRunResults.length && console.log(failedResultFilePath, "\n\n\n"),
 	failedRunResults.length && process.exit(1),
 	runResults
