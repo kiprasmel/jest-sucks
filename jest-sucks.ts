@@ -2,6 +2,16 @@ import os from "os"
 import fs from "fs";
 import path from "path";
 
+process.on("uncaughtException", (e) => {
+	console.error("jest-sucks - uncaughtException:\n\n", e);
+	process.exit(1);
+});
+
+process.on("unhandledRejection", (e) => {
+	console.error("jest-sucks - unhandledRejection:\n\n", e);
+	process.exit(1);
+});
+
 export type Opts = { log?: 0 | 1 | 2 | 3; not?: boolean };
 
 export type RunResult = { passed: boolean; it: string; received: string; expected: string; opts: Opts };
