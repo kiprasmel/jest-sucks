@@ -1,4 +1,4 @@
-import os from "os"
+import os from "os";
 import fs from "fs";
 import path from "path";
 
@@ -72,8 +72,10 @@ export const runMany = (
 	),
 	// TODO configurable:
 	failedRunResults.length
-		? (fs.mkdirSync(path.dirname(failedResultFilePath), { recursive: true }), fs.writeFileSync(failedResultFilePath, JSON.stringify(failedRunResults, null, 2)))
-		: fs.existsSync(failedResultFilePath) && (fs.writeFileSync(failedResultFilePath, "[]")/*, fs.unlinkSync(failedResultFilePath)*/ ),
+		? (fs.mkdirSync(path.dirname(failedResultFilePath), { recursive: true }),
+		  fs.writeFileSync(failedResultFilePath, JSON.stringify(failedRunResults, null, 2)))
+		: fs.existsSync(failedResultFilePath) &&
+		  fs.writeFileSync(failedResultFilePath, "[]") /*, fs.unlinkSync(failedResultFilePath) */,
 	failedRunResults.length && console.log(failedResultFilePath, "\n\n\n"),
 	failedRunResults.length && process.exit(1),
 	runResults
